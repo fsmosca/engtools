@@ -19,9 +19,9 @@ elif page == 'Trunnion':
     st.markdown('**Trunnion**')
 
     with st.form('form',clear_on_submit=False, enter_to_submit=False):
-        st.number_input('Input Pipe OD', min_value=50.0, max_value=400.0, step=0.1, key='podk')
-        st.number_input('Input Wear Plate Thickness', min_value=0.0, max_value=100.0, step=0.1, key='wptk')
-        st.number_input('Input Trunnion OD', min_value=25.0, max_value=300.0, step=0.1, key='todk')
+        st.number_input('Input Pipe OD', min_value=50.0, max_value=800.0, step=0.1, key='podk')
+        st.number_input('Input Wear Plate Thickness', min_value=0.0, max_value=150.0, step=0.1, key='wptk')
+        st.number_input('Input Trunnion OD', min_value=25.0, max_value=600.0, step=0.1, key='todk')
         cal = st.form_submit_button('Calculate', type='primary')
 
     if cal:
