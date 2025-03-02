@@ -1,39 +1,50 @@
 import streamlit as st
-from streamlit_navigation_bar import st_navbar
-import math
+from streamlit import session_state as ss
+import time
 
 
-def find_circle_line_intersection(radius, x_value):
-    y_squared = radius**2 - x_value**2
-    y1 = math.sqrt(y_squared)
-
-    return radius - y1
+st.set_page_config(layout='centered')
 
 
-page = st_navbar(["Home", "Trunnion", "About"])
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
 
-if page == 'Home':
-    st.markdown('**Home**')
 
-elif page == 'Trunnion':
-    st.markdown('**Trunnion**')
+def login():
+    with st.form('form_login', clear_on_submit=True, enter_to_submit=False):
+        username = st.text_input('Username')
+        pw = st.text_input('Password', type='password')
+        is_login = st.form_submit_button('Login', type='primary')
 
-    with st.form('form',clear_on_submit=False, enter_to_submit=False):
-        st.number_input('Input Pipe OD', min_value=50.0, max_value=800.0, step=0.1, key='podk')
-        st.number_input('Input Wear Plate Thickness', min_value=0.0, max_value=150.0, step=0.1, key='wptk')
-        st.number_input('Input Trunnion OD', min_value=25.0, max_value=600.0, step=0.1, key='todk')
-        cal = st.form_submit_button('Calculate', type='primary')
+    if is_login:
+        if username == st.secrets['USERNAME'] and pw == st.secrets['PASSWORD']:
+            ss.logged_in = True
+            st.rerun()
+        else:
+            st.error('Incorrect username or password.')
+            time.sleep(1)
+            st.rerun()
 
-    if cal:
-        r = st.session_state.podk/2 + st.session_state.wptk
-        tr = st.session_state.todk/2
 
-        with st.container(border=True):
-            if tr >= r:
-                st.error('Error, Trunnion OD must be less than Pipe OD.')
-            else:
-                res = find_circle_line_intersection(r, st.session_state.todk/2)
-                st.markdown(f'Distance from BOP or BOWP: **{round(res, 1)}**')
+def logout():
+    if st.button("Log out", type='primary'):
+        st.session_state.logged_in = False
+        st.rerun()
 
-elif page == 'About':
-    st.markdown('**About**')
+
+login_page = st.Page(login, title="Log in", icon=":material/login:")
+logout_page = st.Page(logout, title="Log out", icon=":material/logout:")
+trunnion = st.Page("tools/trunnion.py", title="Trunnion", icon=":material/arrow_upward:")
+
+if st.session_state.logged_in:
+    pg = st.navigation(
+        {
+            "Account": [logout_page],
+            "Tools": [trunnion],
+        }
+    )
+else:
+    pg = st.navigation([login_page])
+
+
+pg.run()
