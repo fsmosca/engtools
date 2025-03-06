@@ -11,19 +11,21 @@ if "logged_in" not in st.session_state:
 
 
 def login():
-    with st.form('form_login', clear_on_submit=True, enter_to_submit=False):
-        username = st.text_input('Username')
-        pw = st.text_input('Password', type='password')
-        is_login = st.form_submit_button('Login', type='primary')
+    c1, c2 = st.columns(2)
+    with c1:
+        with st.form('form_login', clear_on_submit=True, enter_to_submit=False):
+            username = st.text_input('Username')
+            pw = st.text_input('Password', type='password')
+            is_login = st.form_submit_button('Login', type='primary')
 
-    if is_login:
-        if username == st.secrets['USERNAME'] and pw == st.secrets['PASSWORD']:
-            ss.logged_in = True
-            st.rerun()
-        else:
-            st.error('Incorrect username or password.')
-            time.sleep(1)
-            st.rerun()
+        if is_login:
+            if username == st.secrets['USERNAME'] and pw == st.secrets['PASSWORD']:
+                ss.logged_in = True
+                st.rerun()
+            else:
+                st.error('Incorrect username or password.')
+                time.sleep(1)
+                st.rerun()
 
 
 def logout():
@@ -34,7 +36,7 @@ def logout():
 
 login_page = st.Page(login, title="Log in", icon=":material/login:")
 logout_page = st.Page(logout, title="Log out", icon=":material/logout:")
-trunnion = st.Page("tools/trunnion.py", title="Trunnion", icon=":material/arrow_upward:")
+trunnion = st.Page("tools/trunnion.py", title="Trunnion", icon=":material/bike_dock:")
 
 if st.session_state.logged_in:
     pg = st.navigation(
