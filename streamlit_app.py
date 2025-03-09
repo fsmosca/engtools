@@ -41,12 +41,13 @@ def logout():
 login_page = st.Page(login, title="Log in", icon=":material/login:")
 logout_page = st.Page(logout, title="Log out", icon=":material/logout:")
 trunnion = st.Page("tools/trunnion.py", title="Trunnion", icon=":material/bike_dock:")
+pipe = st.Page("tools/pipe.py", title="Pipe", icon=":material/radio_button_unchecked:")
 
 if st.session_state.logged_in:
     pg = st.navigation(
         {
             "Account": [logout_page],
-            "Tools": [trunnion],
+            "Tools": [trunnion, pipe],
         }
     )
 else:
