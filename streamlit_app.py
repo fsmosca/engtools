@@ -3,7 +3,11 @@ from streamlit import session_state as ss
 import time
 
 
-st.set_page_config(layout='centered')
+st.set_page_config(page_title='EngTools',
+                   layout='wide'
+)
+
+st.logo('./data/logo.svg',size='large')
 
 
 if "logged_in" not in st.session_state:
