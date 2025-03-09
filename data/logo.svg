@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="45" fill="#f2f2f2" stroke="#2c3e50" stroke-width="2"/>
+  
+  <!-- Wrench -->
+  <path d="M35 30 L25 40 L30 45 L25 50 L30 55 L40 45 L45 50 L35 30" fill="#3498db" stroke="#2c3e50" stroke-width="1"/>
+  
+  <!-- Gear -->
+  <g transform="translate(60, 60)">
+    <circle cx="0" cy="0" r="12" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+    <circle cx="0" cy="0" r="5" fill="#f2f2f2" stroke="#2c3e50" stroke-width="1"/>
+    
+    <!-- Gear teeth -->
+    <g>
+      <rect x="-2" y="-18" width="4" height="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="0.5"/>
+      <rect x="10.6" y="-14.6" width="4" height="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="0.5" transform="rotate(-45)"/>
+      <rect x="14.6" y="-2" width="6" height="4" fill="#e74c3c" stroke="#2c3e50" stroke-width="0.5" transform="rotate(0)"/>
+      <rect x="10.6" y="10.6" width="4" height="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="0.5" transform="rotate(45)"/>
+      <rect x="-2" y="14.6" width="4" height="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="0.5" transform="rotate(90)"/>
+      <rect x="-14.6" y="10.6" width="4" height="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="0.5" transform="rotate(135)"/>
+      <rect x="-18" y="-2" width="6" height="4" fill="#e74c3c" stroke="#2c3e50" stroke-width="0.5" transform="rotate(180)"/>
+      <rect x="-14.6" y="-14.6" width="4" height="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="0.5" transform="rotate(225)"/>
+    </g>
+  </g>
+  
+  <!-- Ruler/Scale -->
+  <g transform="translate(30,70) rotate(-45)">
+    <rect x="-20" y="-2" width="40" height="4" fill="#f1c40f" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="-20" y1="-2" x2="-20" y2="-6" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="-15" y1="-2" x2="-15" y2="-4" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="-10" y1="-2" x2="-10" y2="-6" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="-5" y1="-2" x2="-5" y2="-4" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="0" y1="-2" x2="0" y2="-6" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="5" y1="-2" x2="5" y2="-4" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="10" y1="-2" x2="10" y2="-6" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="15" y1="-2" x2="15" y2="-4" stroke="#2c3e50" stroke-width="1"/>
+  </g>
+  
+  <!-- Pencil/Drafting element -->
+  <g transform="translate(30,25) rotate(45)">
+    <polygon points="-3,-12 3,-12 3,12 -3,12" fill="#27ae60" stroke="#2c3e50" stroke-width="1"/>
+    <polygon points="-3,-12 3,-12 0,-18" fill="#e67e22" stroke="#2c3e50" stroke-width="1"/>
+  </g>
+</svg>
