@@ -31,9 +31,9 @@ with st.form('form',clear_on_submit=False, enter_to_submit=False):
     c1, c2 = st.columns(2)
     with c1:
         st.selectbox('☀️ Select Pipe DN', options=dn_list, index=12, key='podk')
-        st.number_input('Input Pad or Wear Plate Thickness',
+        st.number_input('Wear Plate Thickness',
                         min_value=0.0, max_value=150.0, step=0.1, key='wptk',
-                        help='For a more accurate thickness, please refer to material specification.')
+                        help='Input wear plate thickness if there is. If it is an RPad do not input.')
     with c2:
         st.selectbox('⭕ Select Trunnion DN', options=dn_list, index=10, key='todk')
         st.number_input('Input Trunnion Distance from top of plate to Pipe CL',
